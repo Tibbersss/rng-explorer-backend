@@ -19,6 +19,17 @@ module.exports = appInfo => {
     database: 'main',
   };
 
+  // set io config here
+  config.io = {
+    init: { wsEngine: 'ws' },// passed to engine.io
+    namespace: {
+      '/': {
+        connectionMiddleware: [],
+        packetMiddleware: [],
+      }
+    }
+  };
+
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1554797085321_9749';
 
