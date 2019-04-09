@@ -12,6 +12,13 @@ module.exports = appInfo => {
    **/
   const config = {};
 
+  // set sqlite3 config here
+  config.sequelize = {
+    dialect: 'sqlite',
+    storage: "/Users/tibbers/Library/Application Support/trustnote-pow-supernode/trustnote.sqlite",
+    database: 'main',
+  };
+
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1554797085321_9749';
 
