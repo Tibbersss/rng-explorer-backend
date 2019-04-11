@@ -38,6 +38,15 @@ class RngController extends Controller {
     }
     await ctx.socket.emit('UPDATE_INDEX', data);
   }
+
+  async getUnitInfo() {
+    const {ctx} = this;
+    let data = {}
+    await rpc.get('getUnitInfo', [ctx.args[0].unit]).then(res => {
+      data = JSON.parse(res.result);
+    })
+    await ctx.socket.emit('UPDATE_UNIT', data);
+  }
 }
 
 module.exports = RngController;
