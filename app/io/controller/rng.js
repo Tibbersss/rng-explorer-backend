@@ -27,6 +27,10 @@ class RngController extends Controller {
         data.miningStatus = JSON.parse(res.result);
       })
 
+      await rpc.get('getDurationByRoundIndex', [data.miningStatus.current_round]).then(res => {
+        data.duration = JSON.parse(res.result);
+      })
+
       data.latestUnits = await ctx.model.Units.findAll({
         order: [
           ['creation_date', 'DESC']
